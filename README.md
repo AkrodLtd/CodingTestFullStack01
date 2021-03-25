@@ -9,7 +9,7 @@ Find your next movie or create your watchlist with this App.
 
 -   [ ] User can see a paginated list of popular movies ordered by release date (from latest to oldest). Movie details can be only **title**, **duration**, **rating** and **release date** (only for ordering purposes).
     - See sample prototype:
-    ![Movie app sketch](./movie_app_sketch.png)
+    <img src="./movie_app_sketch.png" alt="Welcome screen" />
 
 -   [ ] User can add any movie to the default watchlist
 
