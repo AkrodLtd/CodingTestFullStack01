@@ -15,9 +15,8 @@ Find your next movie or create your watchlist with this App.
 
 ## Bonus features
 
--   [ ] User can search a movie by its title
+-   [ ] User can search a movie by its title :fire: or user can type in an autocomplete any word of a movie (e.g. "Die Hard", "Live and let Die") :fire::fire::fire:
 -   [ ] User can create different watchlists (with different titles)
-
 
 ## Technical requirements
 - There should be both frontend (React or React Native) and backend code (preferably NodeJS, C# or Python)
