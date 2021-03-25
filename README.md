@@ -31,6 +31,7 @@ Find your next movie or create your watchlist with this App.
 
 ## How to proceed
 - For those applying for a React Native position, the frontend should be built using React Native. By the same token, for those applying for a ReactJS position, the frontend should be built using react.
+- Just fork this repo and send us a pull request :wink:
 
 ## Useful links and resources
 
