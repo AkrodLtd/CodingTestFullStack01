@@ -20,13 +20,7 @@ export default ({ id, title, poster_path, genre_ids, addMovie }: any) => {
       </Text>
       <Button
         onPress={() =>
-          addMovie({
-            user: 1,
-            id,
-            title,
-            poster_path,
-            genre_ids,
-          })
+          addMovie({ id, title, poster_path, genre_ids, addMovie })
         }
         title="Add to Watchlist"
         accessibilityLabel="Add to Watchlist button"

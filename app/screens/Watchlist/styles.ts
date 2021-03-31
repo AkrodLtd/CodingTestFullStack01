@@ -7,5 +7,8 @@ export const getStyles = (colorScheme: ColorSchemeName) => {
     container: {
       flex: 1,
     },
+    loadingContainer: {
+      margin: 20,
+    },
   });
 };

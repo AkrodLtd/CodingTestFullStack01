@@ -6,20 +6,20 @@ import {
   get as getSearchResults,
   reset as resetSearch,
 } from "../../actions/search";
+import { add as addToWatchList } from "../../actions/watchlist";
 import { RootState } from "../../store";
 
 import { getStyles } from "./styles";
 import useColorScheme from "../../hooks/useColorScheme";
-import Title from "../../components/Title";
 import Button from "../../components/Button";
 import Colors from "../../constants/Colors";
 import Movie from "../../components/Movie";
-// import Button from "../../components/Button";
 
-export default function UpcomingScreen() {
+export default function () {
   const dispatch = useDispatch();
   const search = useSelector((state: RootState) => state.search);
-  const colorScheme = useColorScheme()
+  const userID = useSelector((state: RootState) => state.user.id);
+  const colorScheme = useColorScheme();
   const style = getStyles(colorScheme);
 
   const [text, onChangeText] = useState("");
@@ -32,7 +32,9 @@ export default function UpcomingScreen() {
     dispatch(resetSearch());
   };
 
-  const addMovieToWatchlist = () => {};
+  const addMovieToWatchlist = (movie: any) => {
+    dispatch(addToWatchList(movie, userID));
+  };
 
   return (
     <View style={style.container}>

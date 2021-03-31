@@ -1,29 +1,46 @@
 import React, { useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-import { View, ScrollView } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { View, ScrollView, TextInput, ActivityIndicator } from "react-native";
 
-// import { get as getWatchlist } from '../../actions/watchlist';
-// import { RootState } from "../../store";
+import { RootState } from "../../store";
 
 import { getStyles } from "./styles";
 import useColorScheme from "../../hooks/useColorScheme";
-import Title from "../../components/Title";
 import Button from "../../components/Button";
+import Colors from "../../constants/Colors";
+import Movie from "../../components/Movie";
 
-export default function UpcomingScreen() {
-  // const dispatch = useDispatch();
-  // const upcoming = useSelector((state: RootState) => state.upcoming);
-  const style = getStyles(useColorScheme());
+export default function () {
+  const dispatch = useDispatch();
+  const watchlist = useSelector((state: RootState) => state.watchlist);
+  const colorScheme = useColorScheme();
+  const style = getStyles(colorScheme);
 
-  useEffect(() => {
-    // dispatch(getWatchlist());
-  }, []);
-
+  const removeMovieFromWatchlist = () => {};
   return (
     <View style={style.container}>
       <ScrollView>
         <View>
-          <Title>Watchlist</Title>
+          {watchlist.loading && (
+            <View style={style.loadingContainer}>
+              <ActivityIndicator
+                size="small"
+                color={Colors[colorScheme].tint}
+              />
+            </View>
+          )}
+
+          {watchlist.data.map((movie: any) => (
+            <Movie
+              addMovie={removeMovieFromWatchlist}
+              removeMovie={removeMovieFromWatchlist}
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster_path={movie.poster_path}
+              genre_ids={movie.genre_ids}
+            />
+          ))}
         </View>
       </ScrollView>
     </View>

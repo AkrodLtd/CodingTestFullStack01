@@ -3,26 +3,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { Text, View, Image, ScrollView } from "react-native";
 
 import { get as getUpcomingMovies } from "../../actions/upcoming";
-// import { add as addToWatchList } from '../../actions/watchlist';
-import { getGenre } from "../../utils";
+import { add as addToWatchList } from "../../actions/watchlist";
 import { RootState } from "../../store";
 
 import { getStyles } from "./styles";
 import useColorScheme from "../../hooks/useColorScheme";
-import Title from "../../components/Title";
-import Button from "../../components/Button";
+import Movie from "../../components/Movie";
 
-export default function UpcomingScreen() {
+export default function () {
   const dispatch = useDispatch();
   const upcoming = useSelector((state: RootState) => state.upcoming);
+  const userID = useSelector((state: RootState) => state.user.id);
   const style = getStyles(useColorScheme());
 
   useEffect(() => {
     dispatch(getUpcomingMovies());
   }, []);
 
-  const addMovieToWatchlist = (data: any) => {
-    // TODO: Add to watchlist
+  const addMovieToWatchlist = (movie: any) => {
+    dispatch(addToWatchList(movie, userID));
   };
 
   if (upcoming.data === null) return false;
@@ -55,35 +54,3 @@ export default function UpcomingScreen() {
     </View>
   );
 }
-
-// TODO: Move this to it own file as a shared component?
-const Movie = ({ id, title, poster_path, genre_ids, addMovie }: any) => {
-  const style = getStyles(useColorScheme());
-  return (
-    <View style={style.movie}>
-      <Image
-        style={style.poster}
-        source={{ uri: `https://image.tmdb.org/t/p/w500${poster_path}` }}
-      />
-      <View style={style.infobox}>
-      <Title>{title}</Title>
-      <Text>
-        Genres: {genre_ids.map((id: number) => `${getGenre(id).name} ,`)}
-      </Text>
-      <Button
-        onPress={() =>
-          addMovie({
-            user: 1,
-            id,
-            title,
-            poster_path,
-            genre_ids,
-          })
-        }
-        title="Add to Watchlist"
-        accessibilityLabel="Add to Watchlist button"
-      />
-      </View>
-    </View>
-  );
-};

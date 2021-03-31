@@ -1,30 +1,30 @@
 import {
-  SEARCH_COMPLETE,
-  SEARCH_ERROR,
-  SEARCH_LOADING,
-} from "../actions/search";
+  WATCHLIST_COMPLETE,
+  WATCHLIST_ERROR,
+  WATCHLIST_LOADING,
+} from "../actions/watchlist";
 
 const defaultState = {
   loading: false,
   data: [],
 };
 
-export default function Search(state = defaultState, action: any) {
+export default function Watchlist(state = defaultState, action: any) {
   switch (action.type) {
-    case SEARCH_LOADING:
+    case WATCHLIST_LOADING:
       return {
         ...state,
         loading: true,
       };
       break;
-    case SEARCH_ERROR:
+    case WATCHLIST_ERROR:
       return {
         ...state,
         loading: false,
         data: [],
       };
       break;
-    case SEARCH_COMPLETE:
+    case WATCHLIST_COMPLETE:
       return {
         ...state,
         loading: false,
