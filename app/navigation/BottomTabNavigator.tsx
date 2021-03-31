@@ -6,6 +6,8 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import UpcomingScreen from "../screens/Upcoming";
+import WatchlistScreen from "../screens/Watchlist";
+import SearchScreen from "../screens/Search";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -75,7 +77,7 @@ function SearchTabNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="SearchScreen"
-        component={UpcomingScreen}
+        component={SearchScreen}
         options={{ headerTitle: "Search your movie" }}
       />
     </TabTwoStack.Navigator>
@@ -87,7 +89,7 @@ function WatchlistTabNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="WatchlistScreen"
-        component={UpcomingScreen}
+        component={WatchlistScreen}
         options={{ headerTitle: "My Watchlist" }}
       />
     </TabTwoStack.Navigator>
