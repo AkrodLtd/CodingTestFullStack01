@@ -27,7 +27,7 @@ const complete = (data: any) => {
 
 export const get = (terms: string) => async (dispatch: AppDispatch) => {
   try {
-    if(!terms || !terms.length) {
+    if (!terms || !terms.length) {
       return dispatch(complete([]));
     }
 

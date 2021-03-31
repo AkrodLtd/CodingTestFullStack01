@@ -4,8 +4,8 @@ import { Text, View, Image, ScrollView } from "react-native";
 
 import { get as getUpcomingMovies } from "../../actions/upcoming";
 import { add as addToWatchList } from "../../actions/watchlist";
+import { update as updateUserID } from "../../actions/user";
 import { RootState } from "../../store";
-
 import { getStyles } from "./styles";
 import useColorScheme from "../../hooks/useColorScheme";
 import Movie from "../../components/Movie";
@@ -17,6 +17,7 @@ export default function () {
   const style = getStyles(useColorScheme());
 
   useEffect(() => {
+      dispatch(updateUserID())
     dispatch(getUpcomingMovies());
   }, []);
 

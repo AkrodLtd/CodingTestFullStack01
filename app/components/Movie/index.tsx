@@ -9,6 +9,14 @@ import { getStyles } from "./styles";
 export default ({ movie, addMovie, removeMovie }: any) => {
   const { title, poster_path, genre_ids } = movie;
   const style = getStyles(useColorScheme());
+
+  const getGenreList = (ids: number[]) => {
+    return ids.map((id: number, index: number) => {
+      const isLast: boolean = index === ids.length - 1;
+      return `${getGenre(id).name}${!isLast && ", "}`;
+    });
+  };
+
   return (
     <View style={style.movie}>
       <Image
@@ -17,23 +25,21 @@ export default ({ movie, addMovie, removeMovie }: any) => {
       />
       <View style={style.infobox}>
         <Title>{title}</Title>
-        <Text>
-          Genres: {genre_ids.map((id: number) => `${getGenre(id).name} ,`)}
-        </Text>
-        {addMovie && <Button
-          onPress={() =>
-            addMovie(movie)
-          }
-          title="Add to Watchlist"
-          accessibilityLabel="Add to Watchlist button"
-        />}
-        {removeMovie && <Button
-          onPress={() =>
-            removeMovie(movie)
-          }
-          title="Remove from Watchlist"
-          accessibilityLabel="Remove from Watchlist button"
-        />}
+        <Text>{getGenreList(genre_ids)}</Text>
+        {addMovie && (
+          <Button
+            onPress={() => addMovie(movie)}
+            title="Add to Watchlist"
+            accessibilityLabel="Add to Watchlist button"
+          />
+        )}
+        {removeMovie && (
+          <Button
+            onPress={() => removeMovie(movie)}
+            title="Remove from Watchlist"
+            accessibilityLabel="Remove from Watchlist button"
+          />
+        )}
       </View>
     </View>
   );
