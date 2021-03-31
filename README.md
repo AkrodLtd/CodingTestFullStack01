@@ -5,6 +5,20 @@ Find your next movie or create your watchlist with this App.
 -   This application will help users find their next movie to watch by showing helpful information
 -   Resource needed for the project is movie api, examples include Imdb, MovieDB etc.
 
+## Install
+
+In order to use the required version of node for the project, make sure you have NVM installed and then do:
+
+```zsh
+nvm use
+```
+
+After process with the package installation
+
+```zsh
+npm install
+```
+
 ## User Stories
 
 -   [ ] User can see a paginated list of popular movies ordered by release date (from latest to oldest). Movie details can be only **title**, **duration**, **rating** and **release date** (only for ordering purposes).
