@@ -43,10 +43,7 @@ export default function () {
             <Movie
               addMovie={addMovieToWatchlist}
               key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              poster_path={movie.poster_path}
-              genre_ids={movie.genre_ids}
+              movie={movie}
             />
           ))}
         </View>
