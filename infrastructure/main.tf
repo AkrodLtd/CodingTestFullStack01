@@ -5,7 +5,7 @@ provider "aws" {
 # Lambda Source
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "index.js"
+  source_dir  = "../services/"
   output_path = "lambda_function.zip"
 }
 
