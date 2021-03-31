@@ -24,7 +24,7 @@ const complete = (data: any) => {
   };
 };
 
-export const add = (movie: any, userID: string) => async (
+export const add = (movie: any) => async (
   dispatch: AppDispatch,
   getState: GetState
 ) => {
@@ -32,6 +32,7 @@ export const add = (movie: any, userID: string) => async (
     dispatch(loading());
 
     const watchlist = getState().watchlist.data;
+    const userID = getState().user.id;
     // TODO: Save movie ID into DB
     // TODO: Get updated list of movies in the watchlist
 
@@ -41,7 +42,7 @@ export const add = (movie: any, userID: string) => async (
   }
 };
 
-export const remove = ({ id }: any, userID: string) => async (
+export const remove = ({ id }: any) => async (
   dispatch: AppDispatch,
   getState: GetState
 ) => {
@@ -49,6 +50,7 @@ export const remove = ({ id }: any, userID: string) => async (
     dispatch(loading());
 
     const watchlist = getState().watchlist.data;
+    const userID = getState().user.id;
 
     const filteredList = watchlist.filter((movie: any) => movie.id !== id);
 

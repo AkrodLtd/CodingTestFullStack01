@@ -13,17 +13,16 @@ import Movie from "../../components/Movie";
 export default function () {
   const dispatch = useDispatch();
   const upcoming = useSelector((state: RootState) => state.upcoming);
-  const userID = useSelector((state: RootState) => state.user.id);
   const style = getStyles(useColorScheme());
 
   useEffect(() => {
-      dispatch(updateUserID())
+    dispatch(updateUserID());
     dispatch(getUpcomingMovies());
   }, []);
 
-  const addMovieToWatchlist = (movie: any) => {
-    dispatch(addToWatchList(movie, userID));
-  };
+  // const addMovieToWatchlist = (movie: any) => {
+  //   dispatch(addToWatchList(movie, userID));
+  // };
 
   if (upcoming.data === null) return false;
 
@@ -42,7 +41,6 @@ export default function () {
         <View style={style.movieGroup}>
           {upcoming.data.results.map((movie: any) => (
             <Movie
-              addMovie={addMovieToWatchlist}
               key={movie.id}
               movie={movie}
             />

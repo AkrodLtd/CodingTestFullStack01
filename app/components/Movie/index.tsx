@@ -1,14 +1,30 @@
 import React from "react";
 import { Text, View, Image } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import useColorScheme from "../../hooks/useColorScheme";
 import { getGenre } from "../../utils";
 import Button from "../Button";
 import Title from "../Title";
 import { getStyles } from "./styles";
+import {
+  add as addToWatchList,
+  remove as removeFromWatchList,
+} from "../../actions/watchlist";
+import { RootState } from "../../store";
 
-export default ({ movie, addMovie, removeMovie }: any) => {
-  const { title, poster_path, genre_ids } = movie;
+export default ({ movie }: any) => {
+  const { id, title, poster_path, genre_ids } = movie;
+  const dispatch = useDispatch();
+  const isInWatchlist = useSelector((state: RootState) => !!state.watchlist.data.find((m: any) => m.id === id));
   const style = getStyles(useColorScheme());
+
+  const addMovieToWatchlist = (movie: any) => {
+    dispatch(addToWatchList(movie));
+  };
+
+  const removeMovieFromWatchlist = (movie: any) => {
+    dispatch(removeFromWatchList(movie));
+  };
 
   const getGenreList = (ids: number[]) => {
     return ids.map((id: number, index: number) => {
@@ -26,18 +42,17 @@ export default ({ movie, addMovie, removeMovie }: any) => {
       <View style={style.infobox}>
         <Title>{title}</Title>
         <Text>{getGenreList(genre_ids)}</Text>
-        {addMovie && (
+        {isInWatchlist ? (
           <Button
-            onPress={() => addMovie(movie)}
-            title="Add to Watchlist"
-            accessibilityLabel="Add to Watchlist button"
-          />
-        )}
-        {removeMovie && (
-          <Button
-            onPress={() => removeMovie(movie)}
+            onPress={() => removeMovieFromWatchlist(movie)}
             title="Remove from Watchlist"
             accessibilityLabel="Remove from Watchlist button"
+          />
+        ) : (
+          <Button
+            onPress={() => addMovieToWatchlist(movie)}
+            title="Add to Watchlist"
+            accessibilityLabel="Add to Watchlist button"
           />
         )}
       </View>
