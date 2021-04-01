@@ -13,11 +13,41 @@ In order to use the required version of node for the project, make sure you have
 nvm use
 ```
 
-After process with the package installation
+### App
+
+To install all necessary app packages do the following inside `/app`
 
 ```zsh
 npm install
 ```
+
+And to run in your local do
+
+```zsh
+npm start
+```
+
+### Services
+
+To install all necessary services packages do the following inside `/services`
+
+```zsh
+npm install
+```
+
+And to run in your local do
+
+```zsh
+npm run dev
+```
+
+### Insfrastruture
+
+To deploy the services in your AWS account, you will need to have Terraform installed in your computer and AWS CLI configured with the correct credentials.
+
+Before running `terrraform plan` or `terraform apply` make sure you remove all unecessary files from `/services/` and run `npm intall --production`. This is required to unsure Terraform only zips the necessary files into the bundle to be sent into the lambda.
+
+After a successful apply the API url will be output in your console.
 
 ## User Stories
 
