@@ -1,0 +1,26 @@
+service: services
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-west-2
+  memorySize: 512
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
+    environment:
+      SLS_DEBUG: all
+
+plugins:
+  - serverless-offline

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { View, ScrollView, TextInput, ActivityIndicator } from "react-native";
 
@@ -6,7 +6,6 @@ import {
   get as getSearchResults,
   reset as resetSearch,
 } from "../../actions/search";
-import { add as addToWatchList } from "../../actions/watchlist";
 import { RootState } from "../../store";
 
 import { getStyles } from "./styles";
@@ -18,7 +17,6 @@ import Movie from "../../components/Movie";
 export default function () {
   const dispatch = useDispatch();
   const search = useSelector((state: RootState) => state.search);
-  const userID = useSelector((state: RootState) => state.user.id);
   const colorScheme = useColorScheme();
   const style = getStyles(colorScheme);
 
@@ -30,10 +28,6 @@ export default function () {
 
   const resetSearchResults = () => {
     dispatch(resetSearch());
-  };
-
-  const addMovieToWatchlist = (movie: any) => {
-    dispatch(addToWatchList(movie, userID));
   };
 
   return (
@@ -68,11 +62,7 @@ export default function () {
           )}
 
           {search.data.map((movie: any) => (
-            <Movie
-              addMovie={addMovieToWatchlist}
-              key={movie.id}
-              movie={movie}
-            />
+            <Movie key={movie.id} movie={movie} />
           ))}
         </View>
       </ScrollView>

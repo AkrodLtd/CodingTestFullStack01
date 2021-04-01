@@ -8,7 +8,7 @@ export const getStyles = (colorScheme: ColorSchemeName) => {
       alignSelf: "center",
       flexGrow: 0,
       backgroundColor: Colors[colorScheme].tint,
-      marginTop: 12
+      marginTop: 12,
     },
   });
 };

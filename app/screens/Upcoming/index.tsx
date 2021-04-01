@@ -20,10 +20,6 @@ export default function () {
     dispatch(getUpcomingMovies());
   }, []);
 
-  // const addMovieToWatchlist = (movie: any) => {
-  //   dispatch(addToWatchList(movie, userID));
-  // };
-
   if (upcoming.data === null) return false;
 
   if (upcoming.loading) {
@@ -40,10 +36,7 @@ export default function () {
       <ScrollView>
         <View style={style.movieGroup}>
           {upcoming.data.results.map((movie: any) => (
-            <Movie
-              key={movie.id}
-              movie={movie}
-            />
+            <Movie key={movie.id} movie={movie} />
           ))}
         </View>
       </ScrollView>

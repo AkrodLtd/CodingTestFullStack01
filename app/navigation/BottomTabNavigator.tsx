@@ -31,18 +31,14 @@ export default function BottomTabNavigator() {
         name="Search"
         component={SearchTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="search" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Watchlist"
         component={WatchlistTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="reader" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="reader" color={color} />,
         }}
       />
     </BottomTab.Navigator>

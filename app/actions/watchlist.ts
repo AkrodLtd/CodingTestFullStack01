@@ -1,4 +1,5 @@
 import { AppDispatch, GetState } from "../store";
+import fetchWatchlist from "../utils/fetchWatchlist";
 
 export const WATCHLIST_COMPLETE = "WATCHLIST_COMPLETE";
 export const WATCHLIST_ERROR = "WATCHLIST_ERROR";
@@ -31,12 +32,14 @@ export const add = (movie: any) => async (
   try {
     dispatch(loading());
 
-    const watchlist = getState().watchlist.data;
     const userID = getState().user.id;
-    // TODO: Save movie ID into DB
-    // TODO: Get updated list of movies in the watchlist
 
-    return dispatch(complete([...watchlist, movie]));
+    const list = await fetchWatchlist(`/watchlist/${userID}`, {
+      body: JSON.stringify(movie),
+      method: "POST",
+    });
+
+    return dispatch(complete(list));
   } catch (error) {
     return dispatch(error());
   }
@@ -49,15 +52,29 @@ export const remove = ({ id }: any) => async (
   try {
     dispatch(loading());
 
-    const watchlist = getState().watchlist.data;
     const userID = getState().user.id;
 
-    const filteredList = watchlist.filter((movie: any) => movie.id !== id);
+    const list = await fetchWatchlist(`/watchlist/${userID}/${id}`, {
+      method: "DELETE",
+    });
 
-    // TODO: Remove movie ID from DB
-    // TODO: Get updated list of movies in the watchlist
+    return dispatch(complete(list));
+  } catch (error) {
+    return dispatch(error());
+  }
+};
 
-    return dispatch(complete(filteredList));
+export const get = () => async (dispatch: AppDispatch, getState: GetState) => {
+  try {
+    dispatch(loading());
+
+    const userID = getState().user.id;
+
+    const list = await fetchWatchlist(`/watchlist/${userID}`, {
+      method: "GET",
+    });
+
+    return dispatch(complete(list));
   } catch (error) {
     return dispatch(error());
   }

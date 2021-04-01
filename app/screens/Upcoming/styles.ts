@@ -35,7 +35,7 @@ export const getStyles = (colorScheme: ColorSchemeName) => {
       flex: 1,
       alignItems: "flex-start",
       marginLeft: 12,
-      marginRight: 8
+      marginRight: 8,
     },
   });
 };

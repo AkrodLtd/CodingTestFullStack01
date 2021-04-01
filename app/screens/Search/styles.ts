@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import Colors from "../../constants/Colors";
 import { ColorSchemeName } from "../../hooks/useColorScheme";
 
 export const getStyles = (colorScheme: ColorSchemeName) => {
@@ -20,7 +19,7 @@ export const getStyles = (colorScheme: ColorSchemeName) => {
       marginHorizontal: 20,
       flex: 1,
       flexDirection: "row",
-      justifyContent: "space-between"
-    }
+      justifyContent: "space-between",
+    },
   });
 };

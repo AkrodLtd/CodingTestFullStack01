@@ -33,6 +33,7 @@ export default {
     extra: {
       TMDB_TOKEN: process.env.REACT_NATIVE_TMDB_TOKEN,
       TMDB_API_URL: process.env.REACT_NATIVE_TMDB_API_URL,
+      WATCHLIST_API_URL: process.env.REACT_NATIVE_WATCHLIST_API_URL,
     },
   },
 };

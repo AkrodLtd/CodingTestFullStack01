@@ -15,7 +15,9 @@ import { RootState } from "../../store";
 export default ({ movie }: any) => {
   const { id, title, poster_path, genre_ids } = movie;
   const dispatch = useDispatch();
-  const isInWatchlist = useSelector((state: RootState) => !!state.watchlist.data.find((m: any) => m.id === id));
+  const isInWatchlist = useSelector(
+    (state: RootState) => !!state.watchlist.data.find((m: any) => m.id === id)
+  );
   const style = getStyles(useColorScheme());
 
   const addMovieToWatchlist = (movie: any) => {

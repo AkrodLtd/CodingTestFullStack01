@@ -1,9 +1,4 @@
-const api = require("lambda-api")();
+const serverless = require("serverless-http");
+const app = require("./app");
 
-api.get("/status", async (req, res) => {
-  return { status: "ok" };
-});
-
-exports.handler = async (event, context) => {
-  return await api.run(event, context);
-};
+module.exports.handler = serverless(app);
