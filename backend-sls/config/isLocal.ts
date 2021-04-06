@@ -1,0 +1,1 @@
+export const isLocal = process.env.AWS_LAMBDA_FUNCTION_NAME && !process.env.IS_LOCAL;

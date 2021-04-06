@@ -1,0 +1,36 @@
+Resources:
+  watchListsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: watchListsTable
+      AttributeDefinitions:
+        - AttributeName: watchlist_key
+          AttributeType: S
+        - AttributeName: watchlist_name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: watchlist_key
+          KeyType: HASH
+        - AttributeName: watchlist_name
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+  moviesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: moviesTable
+      AttributeDefinitions:
+        - AttributeName: movie_id
+          AttributeType: S
+        - AttributeName: watchlist_key
+          AttributeType: S
+      KeySchema:
+        - AttributeName: movie_id
+          KeyType: HASH
+        - AttributeName: watchlist_key
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

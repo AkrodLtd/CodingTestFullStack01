@@ -1,0 +1,39 @@
+list-watchlist:
+  handler: app/watchlist.list
+  events:
+    - http:
+        path: /watchlist/list
+        method: get
+        cors: true
+
+create-watchlist:
+  handler: app/watchlist.create
+  events:
+    - http:
+        path: /watchlist/create
+        method: post
+        cors: true
+
+add-movie:
+  handler: app/movielist.create
+  events:
+    - http:
+        path: /movie/add
+        method: post
+        cors: true
+
+list-movie:
+  handler: app/movielist.list
+  events:
+    - http:
+        path: /movie/list
+        method: post
+        cors: true
+
+delete-movie:
+  handler: app/movielist.delete
+  events:
+    - http:
+        path: /movie/delete
+        method: delete
+        cors: true
