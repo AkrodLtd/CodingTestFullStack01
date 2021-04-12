@@ -20,8 +20,8 @@ const WatchList = () => {
       <Header title='My Watch List' onSelect={cate => setwatchlist(cate)} />
       <div style={{ marginTop: 50 }}>
         <Row>
-          {watchlistMovie_Filtered.map(movie => (
-            <Col lg={4} md={6}>
+          {watchlistMovie_Filtered.map((movie, index) => (
+            <Col lg={4} md={6} key={index.toString()}>
               <MovieCard
                 id={movie.movie.id}
                 title={movie.movie.title}

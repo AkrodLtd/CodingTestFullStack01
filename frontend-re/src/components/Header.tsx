@@ -26,16 +26,19 @@ const Header: React.FC<IHeaderProps> = ({ title, onSearch, onSelect }) => {
   const extraComponents = onSearch
     ? [
         <Input
+          key='search-input'
           placeholder='Search by movie title...'
           onChange={(event: React.FormEvent<HTMLInputElement>) => onChange(event.currentTarget.value)}
         />,
-        <Button onClick={() => history.push('/watch-list')} type='primary'>
+        <Button key='search-button' onClick={() => history.push('/watch-list')} type='primary'>
           My Watchlist
         </Button>,
       ]
     : [
         <Select style={{ width: 200 }} defaultValue='all' onChange={v => onSelect && onSelect(v)}>
-          <Select.Option value='all'>All</Select.Option>
+          <Select.Option key='0' value='all'>
+            All
+          </Select.Option>
           {watchlist.watchlist.map(item => (
             <Select.Option key={item.watchlist_key} value={item.watchlist_key}>
               {item.watchlist_name}

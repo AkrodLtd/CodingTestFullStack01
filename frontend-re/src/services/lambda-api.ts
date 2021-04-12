@@ -4,7 +4,7 @@ import { TMovie } from '../redux/reducers/movies.reducer.type';
 import { TWatchList } from '../redux/reducers/watchlist.reducer.type';
 import { TResponseLambda, TResponseError, TWatchListMovieResponse } from './lambda-api.type';
 
-const base_domain = process.env.NODE_ENV === 'production' ? '<PRODUCTION_URL>' : 'http://localhost:3030/dev'
+const base_domain = process.env.NODE_ENV === 'production' ? '<PRODUCTION_URL>' : 'http://localhost:3030';
 const watchlist_api = `${base_domain}/dev/watchlist`;
 
 export async function getWatchlist(): Promise<TResponseLambda | TResponseError> {
