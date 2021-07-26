@@ -19,7 +19,7 @@ Find your next movie or create your watchlist with this App.
 -   [ ] User can create different watchlists (with different titles)
 
 ## Technical requirements
-- There should be both frontend (React or React Native) and backend code (preferably NodeJS, C# or Python)
+- There should be both frontend (Typescript / React Native + Redux) and backend code (typescript / nodeJS)
 - Feel free to use an in-memory database to store the watchlist
 
 ## Technical bonus
