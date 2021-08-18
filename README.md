@@ -29,7 +29,7 @@ Find your next movie or create your watchlist with this App.
 - If you manage to automate the creation of AWS resources (with tools like terraform, CDK, serverless framework, etc.), then you are a **HERO**
 
 ## How to proceed
-- For those applying for a React Native position, the frontend should be built using React Native. By the same token, for those applying for a ReactJS position, the frontend should be built using react.
+- The frontend should be built using React Native.
 - Just fork this repo and send us a pull request :wink:
 
 ## Useful links and resources
